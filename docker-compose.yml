@@ -1,0 +1,46 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  restaurant-server:
+    container_name: restaurant-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    image: restaurant-server:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - test-task-network
+    environment:
+      - RESTAURANT_JDBC_URL=jdbc:postgresql://db:5432
+      - RESTAURANT_JDBC_USER={ user }
+      - RESTAURANT_JDBC_PASS={ password }
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: "restaurant"
+      POSTGRES_USER: { user }
+      POSTGRES_PASSWORD: { password }
+    ports:
+      - "5432:5432"
+    networks:
+      - test-task-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 7080:8080
+    networks:
+      - test-task-network
+
+
+networks:
+  test-task-network:
+    driver: bridge
