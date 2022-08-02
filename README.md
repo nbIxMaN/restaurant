@@ -1,7 +1,7 @@
 ## Restauraunt
 ### A small test project representing the restaurant API.
 #### Data base schema
-![Alt text](./DBSchema.png?raw=true "Data base schema")
+![https://github.com/nbIxMaN/restaurant/blob/master/DBSchema.PNG](https://github.com/nbIxMaN/restaurant/blob/master/DBSchema.PNG?raw=true "Data base schema")
 #### Build
 *Java version 8 or higher is required to build the application*
 
